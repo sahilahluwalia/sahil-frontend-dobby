@@ -84,6 +84,11 @@ export const Userpage = () => {
     setUserId(id);
     getImage(userId);
   }, [userId]);
+  useEffect(() => {
+    const id = localStorage.getItem("id");
+    setUserId(id);
+    getImage(userId);
+  }, []);
 
   useEffect(() => {
     listAll(imageListRef).then((response) => {
