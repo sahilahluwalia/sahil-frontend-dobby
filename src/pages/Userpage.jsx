@@ -83,7 +83,7 @@ export const Userpage = () => {
     const id = localStorage.getItem("id");
     setUserId(id);
     getImage(userId);
-  }, [userId, successAlert]);
+  }, [userId]);
 
   useEffect(() => {
     listAll(imageListRef).then((response) => {
