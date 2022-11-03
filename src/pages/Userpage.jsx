@@ -15,6 +15,7 @@ export const Userpage = () => {
   const [successAlert, setSuccessAlert] = useState(false);
   const [noImageAlert, setNoImageAlert] = useState(false);
   const [noTextAlert, setNoTextAlert] = useState(false);
+  const [retry, setRetry] = useState(false);
   const [token, setToken] = useState(usertoken);
   const [userId, setUserId] = useState("");
   const [search, setSearch] = useState("");
@@ -83,7 +84,7 @@ export const Userpage = () => {
     const id = localStorage.getItem("id");
     setUserId(id);
     getImage(userId);
-  }, [userId]);
+  }, [userId, retry]);
   useEffect(() => {
     const id = localStorage.getItem("id");
     setUserId(id);
@@ -143,6 +144,12 @@ export const Userpage = () => {
       });
       console.log("GET IMAGE RESULT");
       console.log(result.data.result);
+      if (result.data.result.length === 0) {
+        setRetry(!retry);
+        console.log("Retrying");
+        return;
+      }
+      console.log("IMAGE RESULT sent to variable");
       setFilterImages(result.data.result);
       setMongoImages(result.data.result);
     } catch (e) {
