@@ -26,7 +26,7 @@ export const Userpage = () => {
     headers: { Authorization: `Bearer ${token}` },
   };
   const refreshToken = localStorage.getItem("refreshToken");
-  setTimeout(() => setSlowWarning(false), 5000);
+  setTimeout(() => setSlowWarning(false), 2500);
   const renewToken = async () => {
     try {
       const result = await axios.post(baseURL + "/api/token", {
