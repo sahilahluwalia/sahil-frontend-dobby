@@ -1,6 +1,6 @@
 import React from "react";
 import Navbar from "../components/Navbar";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 export const Famouspage = () => {
   const usertoken = localStorage.getItem("token");
@@ -13,6 +13,9 @@ export const Famouspage = () => {
       navigate("/");
     }
   };
+  useEffect(() => {
+    tokenchecker();
+  }, [token]);
   function gen(input) {
     var array = [];
     for (let i = 0; i < input; i++) {
@@ -25,7 +28,7 @@ export const Famouspage = () => {
     return array;
   }
 
-  let imageList = gen(10);
+  let imageList = gen(36);
   return (
     <>
       <Navbar signin={true} />

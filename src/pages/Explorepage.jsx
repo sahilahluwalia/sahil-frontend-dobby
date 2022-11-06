@@ -1,6 +1,19 @@
 import React from "react";
 import Navbar from "../components/Navbar";
+import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+
 export const Explorepage = () => {
+  let navigate = useNavigate();
+  const token = localStorage.getItem("token");
+  const tokenchecker = () => {
+    if (token) {
+      navigate("/user");
+    }
+  };
+  useEffect(() => {
+    tokenchecker();
+  }, [token]);
   function gen(input) {
     var array = [];
 

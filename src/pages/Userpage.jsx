@@ -5,8 +5,6 @@ import { useNavigate } from "react-router-dom";
 import { storage } from "../firebase";
 import { ref, uploadBytes, listAll, getDownloadURL } from "firebase/storage";
 import { v4 } from "uuid";
-import { SuccessAlert } from "../components/SuccessAlert";
-import { Alert } from "../components/Alert";
 const baseURL = process.env.REACT_APP_LINK;
 
 export const Userpage = () => {
@@ -90,7 +88,15 @@ export const Userpage = () => {
     setUserId(id);
     getImage(userId);
   }, []);
-
+  useEffect(() => {
+    emptyfetcher();
+  }, [search]);
+  const emptyfetcher = () => {
+    if (search == "") {
+      // console.log("empty search querying data");
+      getImage(userId);
+    } else return;
+  };
   useEffect(() => {
     listAll(imageListRef).then((response) => {
       // console.log(response);
@@ -191,64 +197,7 @@ export const Userpage = () => {
           </h1>
         </div>
 
-        {/* <div className="fileuploadsection flex mx-10  p-10 gap-10 justify-center">
-          <input
-            type="file"
-            className="py-3"
-            onChange={(event) => {
-              setImageUpload(event.target.files[0]);
-            }}
-          />
-
-          <input
-            className="rounded pl-3 py-3 bg-gray-200"
-            placeholder="Enter File name"
-            type="text"
-            value={name}
-            onChange={(e) => setName(e.target.value)}
-          />
-          <button
-            className="bg-slate-200 hover:bg-slate-300 px-3 rounded"
-            onClick={uploadImage}
-          >
-            Upload image
-          </button>
-        </div> */}
         <div>
-          {/* <div className="mx-10">
-            {successAlert && (
-              <SuccessAlert message={"Image uploaded Successfully"} />
-            )}
-            {noImageAlert && <Alert message={"Image not selected!"} />}
-            {noTextAlert && (
-              <Alert message={"Please enter the name of the image"} />
-            )}
-            {slowWarning && (
-              <Alert message={"Please be patient, Images take time to load"} />
-            )}
-          </div> */}
-
-          {/* <div className="search bar  flex mx-10 justify-center gap-10 py-10">
-            <input
-              className="bg-gray-200 px-10 py-2 rounded"
-              type="text"
-              value={search}
-              onChange={(e) => setSearch(e.target.value)}
-            />
-            <button
-              onClick={runQuery}
-              className="bg-gray-200 px-10 py-2 rounded hover:bg-gray-300"
-            >
-              search
-            </button>
-            <button
-              onClick={getImage}
-              className="bg-green-200 px-5 rounded hover:bg-green-300"
-            >
-              reload
-            </button>
-          </div> */}
-
           <div className="flex items-center justify-center w-32 sm:w-64 mx-auto">
             <div className="flex border-2 rounded-xl ">
               <input
@@ -273,17 +222,8 @@ export const Userpage = () => {
               </button>
             </div>
           </div>
-          {/* <div className="image area grid grid-cols-3 gap-10  mx-10"> */}
-          <div className="mt-16 flex flex-wrap items-baseline mx-5 sm:mx-20 justify-evenly gap-5 my-16">
-            {/* <div className="image area grid grid-cols-3 gap-10  mx-10"> */}
-            {/* {filterImages &&
-              filterImages.map((item) => (
-                <div className="flex flex-col mx-10">
-                  <img className="h-50 w-50" src={item.link} alt="" srcSet="" />
-                  <div className="mx-auto p-2 text-xl">{item.name}</div>
-                </div>
-              ))} */}
 
+          <div className="mt-16 flex flex-wrap items-baseline mx-5 sm:mx-20 justify-evenly gap-5 my-16">
             {filterImages &&
               filterImages.map((item) => (
                 <>
@@ -300,10 +240,6 @@ export const Userpage = () => {
                     </div>
                   </div>
                 </>
-                //  { <div className="flex flex-col mx-10">
-                //           <img className="h-50 w-50" src={item.link} alt="" srcSet="" />
-                //           <div className="mx-auto p-2 text-xl">{item.name}</div>
-                //         </div> }
               ))}
           </div>
         </div>

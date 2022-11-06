@@ -4,8 +4,19 @@ import axios from "axios";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import Navbar from "../components/Navbar";
+import { useNavigate } from "react-router-dom";
 
 export const Indexpage = () => {
+  let navigate = useNavigate();
+  const token = localStorage.getItem("token");
+  const tokenchecker = () => {
+    if (token) {
+      navigate("/user");
+    }
+  };
+  useEffect(() => {
+    tokenchecker();
+  }, [token]);
   function gen(input) {
     var array = [];
 
