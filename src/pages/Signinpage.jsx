@@ -67,10 +67,12 @@ export const Signinpage = () => {
   };
   return (
     <>
-      <div className="bg-gray-200 min-h-screen flex flex-col">
+      <div className="bg-gradient-to-t from-purple-800 via-violet-900 to-purple-800 min-h-screen flex flex-col">
         <div className="container max-w-sm mx-auto flex-1 flex flex-col items-center justify-center px-2">
           <div className="bg-white px-6 py-8 rounded shadow-md text-black w-full">
-            <h1 className="mb-8 text-3xl text-center">Sign in</h1>
+            <h1 className="mb-8  text-3xl text-center font-extrabold text-indigo-600">
+              Sign in
+            </h1>
             <form onSubmit={handleSignin}>
               <input
                 type="text"
@@ -90,7 +92,7 @@ export const Signinpage = () => {
 
               <button
                 type="submit"
-                className="w-full text-center py-3 rounded bg-green text-white hover:bg-green-700 bg-green-600 focus:outline-none my-1"
+                className="shadow-xl w-full font-semibold text-center py-3 rounded bg-green text-white hover:bg-indigo-700 bg-indigo-600 focus:outline-none my-1"
               >
                 Sign in
               </button>
@@ -100,11 +102,11 @@ export const Signinpage = () => {
             {alert && <Alert message={"Server Error"} />}
           </div>
 
-          <div className="text-grey-dark mt-6 flex gap-5">
-            No Account?
+          <div className="text-white mt-6 flex gap-5 font-semibold ">
+            No Account ?
             <Link to="/signup">
-              <p className="hover:text-blue-700 underline text-blue-600">
-                Sign up
+              <p className="underline hover:text-gray-200">
+                Signup
               </p>
             </Link>
           </div>
