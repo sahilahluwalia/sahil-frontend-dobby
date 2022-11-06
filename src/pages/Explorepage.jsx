@@ -31,7 +31,7 @@ export const Explorepage = () => {
   return (
     <>
       <Navbar signin={false} />
-      <div className="text-center mt-32 mb-20">
+      <div className="text-center mt-10 sm:mt-32 mb-8 sm:mb-20">
         <h1 className="text-4xl tracking-tight font-extrabold text-gray-900 sm:text-5xl md:text-6xl">
           <span className="block xl:inline">Amazing</span>{" "}
           <span className="block text-indigo-600 xl:inline">Uploads</span>
