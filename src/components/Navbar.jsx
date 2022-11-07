@@ -71,6 +71,11 @@ const Navbar = (props) => {
                       Explore
                     </p>
                   </Link>
+                  <Link to="/user">
+                    <p className="mouse-pointer flex items-center justify-center px-3 py-2 border border-transparent text-base font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 ">
+                      My Uploads
+                    </p>
+                  </Link>
                   <Link to="/upload">
                     <button className="mouse-pointer flex items-center justify-center px-3 py-2 border border-transparent text-base font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 ">
                       Upload
