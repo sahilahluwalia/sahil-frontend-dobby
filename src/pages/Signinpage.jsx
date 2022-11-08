@@ -105,10 +105,13 @@ export const Signinpage = () => {
           <div className="text-white mt-6 flex gap-5 font-semibold ">
             No Account ?
             <Link to="/signup">
-              <p className="underline hover:text-gray-200">
-                Signup
-              </p>
+              <p className="underline hover:text-gray-200">Signup</p>
             </Link>
+          </div>
+          <div className="box mt-5 bg-blue-600 p-4 rounded text-white">
+            <p>Sample Account</p>
+            <p>email: sample@gmail.com</p>
+            <p>password: sample123</p>
           </div>
         </div>
       </div>
