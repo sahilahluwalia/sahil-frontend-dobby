@@ -28,7 +28,7 @@ export const Famouspage = () => {
     return array;
   }
 
-  let imageList = gen(36);
+  let imageList = React.useCallback(()=>gen(36) , []);
   return (
     <>
       <Navbar signin={true} />

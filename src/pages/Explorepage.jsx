@@ -27,7 +27,7 @@ export const Explorepage = () => {
     return array;
   }
 
-  let imageList = gen(10);
+  let imageList = React.useCallback(()=>gen(10) , []);
   return (
     <>
       <Navbar signin={false} />
