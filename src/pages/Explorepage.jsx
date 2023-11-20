@@ -2,7 +2,20 @@ import React from "react";
 import Navbar from "../components/Navbar";
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+function gen(input) {
+  var array = [];
 
+  for (let i = 0; i < input; i++) {
+    array.push(
+        `https://random.imagecdn.app/${Math.floor(Math.random() * 200) + 200}/${
+            Math.floor(Math.random() * 100) + 200
+        }`
+    );
+  }
+  return array;
+}
+
+let imageList = gen(10)
 export const Explorepage = () => {
   let navigate = useNavigate();
   const token = localStorage.getItem("token");
@@ -14,20 +27,7 @@ export const Explorepage = () => {
   useEffect(() => {
     tokenchecker();
   }, [token]);
-  function gen(input) {
-    var array = [];
 
-    for (let i = 0; i < input; i++) {
-      array.push(
-        `https://random.imagecdn.app/${Math.floor(Math.random() * 200) + 200}/${
-          Math.floor(Math.random() * 100) + 200
-        }`
-      );
-    }
-    return array;
-  }
-
-  let imageList = React.useCallback(()=>gen(10) , []);
   return (
     <>
       <Navbar signin={false} />

@@ -2,6 +2,19 @@ import React from "react";
 import Navbar from "../components/Navbar";
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+function gen(input) {
+  var array = [];
+  for (let i = 0; i < input; i++) {
+    array.push(
+        `https://random.imagecdn.app/${Math.floor(Math.random() * 200) + 200}/${
+            Math.floor(Math.random() * 100) + 200
+        }`
+    );
+  }
+  return array;
+}
+
+let imageList = gen(36)
 export const Famouspage = () => {
   const usertoken = localStorage.getItem("token");
   let navigate = useNavigate();
@@ -16,19 +29,7 @@ export const Famouspage = () => {
   useEffect(() => {
     tokenchecker();
   }, [token]);
-  function gen(input) {
-    var array = [];
-    for (let i = 0; i < input; i++) {
-      array.push(
-        `https://random.imagecdn.app/${Math.floor(Math.random() * 200) + 200}/${
-          Math.floor(Math.random() * 100) + 200
-        }`
-      );
-    }
-    return array;
-  }
 
-  let imageList = React.useCallback(()=>gen(36) , []);
   return (
     <>
       <Navbar signin={true} />
