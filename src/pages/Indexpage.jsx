@@ -6,6 +6,20 @@ import { Link } from "react-router-dom";
 import Navbar from "../components/Navbar";
 import { useNavigate } from "react-router-dom";
 
+function gen(input) {
+  var array = [];
+
+  for (let i = 0; i < input; i++) {
+    array.push(
+        `https://random.imagecdn.app/${Math.floor(Math.random() * 200) + 200}/${
+            Math.floor(Math.random() * 100) + 200
+        }`
+    );
+  }
+  return array;
+}
+let imageList = gen(24);
+
 export const Indexpage = () => {
   let navigate = useNavigate();
   const token = localStorage.getItem("token");
@@ -17,18 +31,7 @@ export const Indexpage = () => {
   useEffect(() => {
     tokenchecker();
   }, [token]);
-  function gen(input) {
-    var array = [];
 
-    for (let i = 0; i < input; i++) {
-      array.push(
-        `https://random.imagecdn.app/${Math.floor(Math.random() * 200) + 200}/${
-          Math.floor(Math.random() * 100) + 200
-        }`
-      );
-    }
-    return array;
-  }
 
   var sentence = [
     "I loved it! - Ram",
@@ -58,7 +61,6 @@ export const Indexpage = () => {
   useEffect(() => {
     load();
   }, []);
-  let imageList = gen(24);
 
   return (
     <>
